@@ -1,0 +1,4 @@
+
+build_arguments:            
+- "GFXSTRING=gfx1151"               # llamacpp needs the amdgpu gfx string for build
+
