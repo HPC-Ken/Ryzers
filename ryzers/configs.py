@@ -105,7 +105,7 @@ class ConfigManager:
         if gpu:
             runflags += " --device=/dev/kfd --device=/dev/dri --security-opt seccomp=unconfined --group-add video --group-add render "
         if x11:
-            runflags += " -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix"
+            runflags += " -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v /home/$USER/.Xauthority:/root/.Xauthority"
         if cameras:
             vdevices = sorted(glob.glob('/dev/video*'))
             runflags += f" {' '.join(f'--device {vdev}' for vdev in vdevices)}"

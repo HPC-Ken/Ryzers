@@ -16,13 +16,13 @@ RUN apt-get update && \
 RUN wget -qO- https://packages.lunarg.com/lunarg-signing-key-pub.asc | tee /etc/apt/trusted.gpg.d/lunarg.asc
 RUN wget -qO /etc/apt/sources.list.d/lunarg-vulkan-noble.list http://packages.lunarg.com/vulkan/lunarg-vulkan-noble.list
 RUN apt update
-RUN apt install -y vulkan-sdk
+RUN apt install -y vulkan-sdk libasound2-dev
 
 # Clone and build LlamaCPP
 WORKDIR /ryzers
 RUN curl https://installers.lmstudio.ai/linux/x64/0.3.27-4/LM-Studio-0.3.27-4-x64.AppImage -o LM-Studio-0.3.27-4-x64.AppImage && \
-chmod +x LM-Studio-0.3.27-4-x64.AppImage && \
-./LM-Studio-0.3.27-4-x64.AppImage --appimage-extract-and-run --no-sandbox
+chmod +x LM-Studio-0.3.27-4-x64.AppImage 
+#&& ./LM-Studio-0.3.27-4-x64.AppImage --appimage-extract --no-sandbox
 
 # Copy test script
 COPY test.sh /ryzers/test_lmstudio.sh
